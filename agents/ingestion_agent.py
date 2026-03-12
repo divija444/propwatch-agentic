@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 class IngestionAgent:
 
     def __init__(self, path):
@@ -10,9 +11,22 @@ class IngestionAgent:
         return df
 
     def wide_to_long(self, df):
+
+        metadata_cols = [
+            "RegionID",
+            "SizeRank",
+            "RegionName",
+            "RegionType",
+            "StateName"
+        ]
+
         df_long = df.melt(
-            id_vars=["RegionName"],
+            id_vars=metadata_cols,
             var_name="Date",
             value_name="Rent"
         )
+
+        # Convert Date column
+        df_long["Date"] = pd.to_datetime(df_long["Date"])
+
         return df_long
