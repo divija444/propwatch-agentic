@@ -1,4 +1,4 @@
-from agents.ingestion_agent import IngestionAgent
+'''from agents.ingestion_agent import IngestionAgent
 from agents.drift_agent import DriftAgent
 from agents.hotspot_agent import HotspotAgent
 
@@ -30,6 +30,27 @@ def main():
 
     print("\nTop Hotspots:")
     print(top_hotspots)
+
+if __name__ == "__main__":
+    main()'''
+    
+    
+from agents.graph import graph
+
+
+def main():
+
+    # Run the LangGraph pipeline
+    result = graph.invoke({})
+
+    print("\nPipeline Finished")
+
+    if "hotspots" in result:
+        print("\nTop Hotspots:")
+        print(result["hotspots"].head(10))
+    else:
+        print("No hotspots returned.")
+
 
 if __name__ == "__main__":
     main()
