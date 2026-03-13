@@ -9,7 +9,8 @@ class DriftAgent:
         df = df.dropna(subset=["Rent"])
 
         # Convert Date column safely
-        df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
+        #df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
+        df.loc[:, "Date"] = pd.to_datetime(df["Date"], errors="coerce")
 
         # Remove rows where Date conversion failed
         df = df.dropna(subset=["Date"])

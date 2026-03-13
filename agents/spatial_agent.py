@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 class SpatialAgent:
 
     def analyze_spatial_patterns(self, df):
@@ -15,8 +14,5 @@ class SpatialAgent:
             "rent_change_pct",
             ascending=False
         )
-
-        print("\nTop Growing States:")
-        print(spatial_summary.head(10))
 
         return spatial_summary
