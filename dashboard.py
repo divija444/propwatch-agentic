@@ -1,99 +1,255 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import us
+
 from controller import PipelineController
-from langgraph.graph import StateGraph
+from analytics.scoring.investment_score import compute_investment_score
+from ai.insight_generator import generate_market_insights
+from ai.housing_llm_assistant import ask_housing_llm
 
-st.set_page_config(page_title="Rental Market Analytics", layout="wide")
 
-st.title("🏠 US Rental Market Analytics Dashboard")
+# ---------------------------------------------------
+# PAGE SETTINGS
+# ---------------------------------------------------
 
-st.write("Interactive analysis of US rental market trends using a multi-agent data pipeline.")
+st.set_page_config(
+    page_title="PropWatch AI Housing Intelligence",
+    layout="wide"
+)
 
-# Run pipeline
+st.title("🏠 PropWatch AI Housing Intelligence Platform")
+
+st.markdown(
+"""
+Analyze **U.S. rental housing markets** using AI.
+
+This platform helps identify:
+
+• 📈 Fast growing rental markets  
+• 💰 Expensive cities  
+• 🏆 Best places for property investment  
+• 🤖 AI-generated market insights
+"""
+)
+
+# ---------------------------------------------------
+# RUN DATA PIPELINE
+# ---------------------------------------------------
+
 controller = PipelineController()
 result = controller.run()
 
-df_drift = result["df_drift"]
-hotspots = result["hotspots"]
-spatial = result["spatial_summary"]
-expensive = result["expensive_regions"]
+df = result["df_drift"].copy()
 
-# -------------------------
-# Top Hotspots
-# -------------------------
+# ---------------------------------------------------
+# DATA CLEANING
+# ---------------------------------------------------
 
-st.header("🔥 Top Rent Growth Cities")
+df = df.dropna(subset=["Rent"])
 
-st.dataframe(hotspots.head(10))
+df["rent_change_pct"] = df["rent_change_pct"].fillna(0)
 
-fig_hotspots = px.bar(
-    hotspots.head(10),
-    x="RegionName",
-    y="rent_change_pct",
-    color="StateName",
-    title="Top 10 Rental Growth Cities"
+df["RentGrowthPercent"] = df["rent_change_pct"] * 100
+
+
+# ---------------------------------------------------
+# STATE NAME CONVERSION
+# ---------------------------------------------------
+
+def full_state_name(abbr):
+
+    try:
+        if pd.isna(abbr):
+            return "Unknown"
+
+        state = us.states.lookup(str(abbr))
+
+        return state.name if state else abbr
+
+    except:
+        return abbr
+
+
+df["StateFull"] = df["StateName"].apply(full_state_name)
+
+# ---------------------------------------------------
+# INVESTMENT SCORE
+# ---------------------------------------------------
+
+df = compute_investment_score(df)
+
+# ---------------------------------------------------
+# SIDEBAR FILTERS
+# ---------------------------------------------------
+
+st.sidebar.header("📍 Filters")
+
+states = sorted(df["StateFull"].dropna().unique())
+
+selected_states = st.sidebar.multiselect(
+    "Select States",
+    states,
+    default=states[:5]
 )
 
-st.plotly_chart(fig_hotspots, use_container_width=True)
+filtered_df = df[df["StateFull"].isin(selected_states)]
 
-# -------------------------
-# Growing States
-# -------------------------
+# ---------------------------------------------------
+# MARKET OVERVIEW
+# ---------------------------------------------------
 
-st.header("📈 Fastest Growing States")
+st.subheader("📊 Market Overview")
 
-st.dataframe(spatial.head(10))
+col1, col2, col3, col4 = st.columns(4)
 
-fig_states = px.bar(
-    spatial.head(10),
-    x="StateName",
-    y="rent_change_pct",
-    title="Top Growing States"
+col1.metric(
+    "Cities Analyzed",
+    len(filtered_df)
 )
 
-st.plotly_chart(fig_states, use_container_width=True)
-
-# -------------------------
-# Most Expensive Regions
-# -------------------------
-
-st.header("💰 Most Expensive Rental Markets")
-
-st.dataframe(expensive.head(10))
-
-fig_expensive = px.bar(
-    expensive.head(10),
-    x="RegionName",
-    y="Rent",
-    color="StateName",
-    title="Most Expensive Rental Markets"
+col2.metric(
+    "Average Rent",
+    f"${round(filtered_df['Rent'].mean(),2)}"
 )
 
-st.plotly_chart(fig_expensive, use_container_width=True)
-
-# -------------------------
-# Rent Trend Visualization
-# -------------------------
-
-st.header("📊 Rent Trend Over Time")
-
-cities = df_drift["RegionName"].unique()
-
-selected_city = st.selectbox(
-    "Select a City",
-    cities
+col3.metric(
+    "Average Rent Growth",
+    f"{round(filtered_df['RentGrowthPercent'].mean(),2)}%"
 )
 
-city_df = df_drift[df_drift["RegionName"] == selected_city]
-
-fig_trend = px.line(
-    city_df,
-    x="Date",
-    y="Rent",
-    title=f"Rent Trend: {selected_city}"
+col4.metric(
+    "Highest Rent",
+    f"${round(filtered_df['Rent'].max(),2)}"
 )
 
-st.plotly_chart(fig_trend, use_container_width=True)
+st.divider()
 
-st.success("Dashboard running successfully 🚀")
+# ---------------------------------------------------
+# FASTEST GROWING CITIES
+# ---------------------------------------------------
+
+st.subheader("📈 Fastest Growing Rental Markets")
+
+top_growth = (
+    filtered_df
+    .sort_values("RentGrowthPercent", ascending=False)
+    .head(20)
+)
+
+fig_growth = px.bar(
+    top_growth,
+    x="RentGrowthPercent",
+    y="RegionName",
+    orientation="h",
+    color="RentGrowthPercent",
+    labels={
+        "RegionName": "City",
+        "RentGrowthPercent": "Rent Growth (%)"
+    }
+)
+
+st.plotly_chart(fig_growth, use_container_width=True)
+
+# ---------------------------------------------------
+# INVESTMENT OPPORTUNITIES
+# ---------------------------------------------------
+
+st.subheader("🏆 Best Cities for Property Investment")
+
+top_invest = (
+    filtered_df
+    .sort_values("investment_score", ascending=False)
+    .head(15)
+)
+
+st.dataframe(
+    top_invest[[
+        "RegionName",
+        "StateFull",
+        "Rent",
+        "RentGrowthPercent",
+        "investment_score"
+    ]].rename(columns={
+        "RegionName": "City",
+        "StateFull": "State",
+        "Rent": "Average Rent ($)",
+        "RentGrowthPercent": "Rent Growth (%)",
+        "investment_score": "Investment Score"
+    }),
+    use_container_width=True
+)
+
+# ---------------------------------------------------
+# RENT TREND EXPLORER
+# ---------------------------------------------------
+
+st.subheader("📊 Rent Explorer")
+
+city = st.selectbox(
+    "Select City",
+    filtered_df["RegionName"].unique()
+)
+
+city_df = df[df["RegionName"] == city]
+
+if "Date" in city_df.columns:
+
+    fig_trend = px.line(
+        city_df,
+        x="Date",
+        y="Rent",
+        title=f"Rent Trend in {city}"
+    )
+
+    st.plotly_chart(fig_trend, use_container_width=True)
+
+# ---------------------------------------------------
+# AI MARKET INSIGHTS
+# ---------------------------------------------------
+
+st.subheader("🤖 AI Market Insights")
+
+if st.button("Generate AI Market Report"):
+
+    insights = generate_market_insights(filtered_df)
+
+    st.write(insights)
+
+# ---------------------------------------------------
+# DATA EXPLORER
+# ---------------------------------------------------
+
+st.subheader("📁 Explore Data")
+
+st.dataframe(filtered_df)
+
+# ---------------------------------------------------
+# AI HOUSING ASSISTANT
+# ---------------------------------------------------
+
+st.sidebar.divider()
+
+st.sidebar.header("🤖 Ask the Housing AI")
+
+question = st.sidebar.text_input(
+    "Ask a question about housing markets"
+)
+
+if question:
+
+    answer = ask_housing_llm(question, filtered_df)
+
+    st.sidebar.write(answer)
+
+st.sidebar.markdown(
+"""
+Example questions:
+
+• Which cities have fastest rent growth?  
+• What are the best investment markets?  
+• Which states have rising housing demand?
+"""
+)
+
+st.success("Dashboard loaded successfully 🚀")

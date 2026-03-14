@@ -1,47 +1,25 @@
 from controller import PipelineController
-from analytics.maps.rent_growth_map import generate_rent_growth_map
-from analytics.models.rent_forecast import forecast_rent
+from analytics.maps.gis_map import generate_gis_map
+from analytics.scoring.investment_score import compute_investment_score
 
+print("Starting Pipeline...")
 
-def main():
+controller = PipelineController()
 
-    controller = PipelineController()
+result = controller.run()
 
-    result = controller.run()
+df = result["df_drift"]
 
-    # Hotspots
-    if "hotspots" in result:
-        print("\nTop Hotspots:")
-        print(result["hotspots"].head(10))
+print("Generating GIS Map...")
 
-    # Spatial
-    if "spatial_summary" in result:
-        print("\nTop Growing States:")
-        print(result["spatial_summary"].head(10))
+generate_gis_map(df)
 
-    # Affordability
-    if "expensive_regions" in result:
-        print("\nMost Expensive Regions:")
-        print(result["expensive_regions"].head(10))
+print("Computing Investment Score...")
 
-    # Insights
-    if "insights" in result:
-        print("\nMarket Insights:")
-        for insight in result["insights"]:
-            print(insight)
+df = compute_investment_score(df)
 
-    # GIS Map
-    if "df_drift" in result:
-        print("\nGenerating Rent Growth Map...")
-        generate_rent_growth_map(result["df_drift"])
+print("Top Investment Markets:")
 
-    # Forecast
-    if "df_drift" in result:
-        print("\nRent Forecast Example:")
-        forecast_rent(result["df_drift"], "Los Angeles, CA")
+print(df[["RegionName","investment_score"]].head(10))
 
-    print("\nPipeline Complete")
-
-
-if __name__ == "__main__":
-    main()
+print("Pipeline Finished")
