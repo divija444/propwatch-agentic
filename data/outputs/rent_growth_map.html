@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_161607710c552148d4fb6448e336a6b8 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_161607710c552148d4fb6448e336a6b8" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_161607710c552148d4fb6448e336a6b8 = L.map(
+                "map_161607710c552148d4fb6448e336a6b8",
+                {
+                    center: [39.5, -98.35],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 4,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_7c9f9f29f197743dc571bea8e307c004 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_7c9f9f29f197743dc571bea8e307c004.addTo(map_161607710c552148d4fb6448e336a6b8);
+        
+    
+            var circle_marker_ff13fd56a998b6aacfd03ac388db2967 = L.circleMarker(
+                [36.5879877, -79.3916713],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_161607710c552148d4fb6448e336a6b8);
+        
+    
+        var popup_0a856bedfda3ad81eeb5e1cc0cff8995 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d68df4c704b2ad4f0b61272d96e3fb44 = $(`<div id="html_d68df4c704b2ad4f0b61272d96e3fb44" style="width: 100.0%; height: 100.0%;">Danville, VA, VA<br>Growth: 5.26%</div>`)[0];
+                popup_0a856bedfda3ad81eeb5e1cc0cff8995.setContent(html_d68df4c704b2ad4f0b61272d96e3fb44);
+            
+        
+
+        circle_marker_ff13fd56a998b6aacfd03ac388db2967.bindPopup(popup_0a856bedfda3ad81eeb5e1cc0cff8995)
+        ;
+
+        
+    
+    
+            var circle_marker_6cacd9cca4a5ae9c6b35eaf51df39746 = L.circleMarker(
+                [42.0544011, -70.1849854],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_161607710c552148d4fb6448e336a6b8);
+        
+    
+        var popup_7081e7d8f301683fc6fe14c0018722f0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_40aaeebca9d4571b03d41e649765579a = $(`<div id="html_40aaeebca9d4571b03d41e649765579a" style="width: 100.0%; height: 100.0%;">Barnstable Town, MA, MA<br>Growth: 5.01%</div>`)[0];
+                popup_7081e7d8f301683fc6fe14c0018722f0.setContent(html_40aaeebca9d4571b03d41e649765579a);
+            
+        
+
+        circle_marker_6cacd9cca4a5ae9c6b35eaf51df39746.bindPopup(popup_7081e7d8f301683fc6fe14c0018722f0)
+        ;
+
+        
+    
+    
+            var circle_marker_ae5b760bd7efbd4ffe9344901a5b3877 = L.circleMarker(
+                [39.3642852, -74.4229351],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_161607710c552148d4fb6448e336a6b8);
+        
+    
+        var popup_41d81e96416b52ae5bc8a6750d80cee3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_30054060d47c18a79bc49cb01990160f = $(`<div id="html_30054060d47c18a79bc49cb01990160f" style="width: 100.0%; height: 100.0%;">Atlantic City, NJ, NJ<br>Growth: 4.96%</div>`)[0];
+                popup_41d81e96416b52ae5bc8a6750d80cee3.setContent(html_30054060d47c18a79bc49cb01990160f);
+            
+        
+
+        circle_marker_ae5b760bd7efbd4ffe9344901a5b3877.bindPopup(popup_41d81e96416b52ae5bc8a6750d80cee3)
+        ;
+
+        
+    
+    
+            var circle_marker_106106d6b1e31fa05d9c7cc671421bba = L.circleMarker(
+                [41.8006523, -73.1212214],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_161607710c552148d4fb6448e336a6b8);
+        
+    
+        var popup_f483a67ce6373791f42205500e35c0c2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3f8f2507acafd48df92d716a46ca5076 = $(`<div id="html_3f8f2507acafd48df92d716a46ca5076" style="width: 100.0%; height: 100.0%;">Torrington, CT, CT<br>Growth: 4.88%</div>`)[0];
+                popup_f483a67ce6373791f42205500e35c0c2.setContent(html_3f8f2507acafd48df92d716a46ca5076);
+            
+        
+
+        circle_marker_106106d6b1e31fa05d9c7cc671421bba.bindPopup(popup_f483a67ce6373791f42205500e35c0c2)
+        ;
+
+        
+    
+    
+            var circle_marker_c0a008d032780c68998b9409f2a14cdc = L.circleMarker(
+                [37.70114, -92.1693303],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_161607710c552148d4fb6448e336a6b8);
+        
+    
+        var popup_c815c3a775eee2a26060fd3bf864220d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2c76d4f15cd2cf961464907f48266865 = $(`<div id="html_2c76d4f15cd2cf961464907f48266865" style="width: 100.0%; height: 100.0%;">Fort Leonard Wood, MO, MO<br>Growth: 4.30%</div>`)[0];
+                popup_c815c3a775eee2a26060fd3bf864220d.setContent(html_2c76d4f15cd2cf961464907f48266865);
+            
+        
+
+        circle_marker_c0a008d032780c68998b9409f2a14cdc.bindPopup(popup_c815c3a775eee2a26060fd3bf864220d)
+        ;
+
+        
+    
+    
+            var circle_marker_3d4539103c25def6e5f758990377b1ff = L.circleMarker(
+                [39.7686055, -94.8466322],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_161607710c552148d4fb6448e336a6b8);
+        
+    
+        var popup_3e9090b5ffbdfe8900dd08581103b013 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8884ef448d46a554cab294d733485775 = $(`<div id="html_8884ef448d46a554cab294d733485775" style="width: 100.0%; height: 100.0%;">St. Joseph, MO, MO<br>Growth: 4.29%</div>`)[0];
+                popup_3e9090b5ffbdfe8900dd08581103b013.setContent(html_8884ef448d46a554cab294d733485775);
+            
+        
+
+        circle_marker_3d4539103c25def6e5f758990377b1ff.bindPopup(popup_3e9090b5ffbdfe8900dd08581103b013)
+        ;
+
+        
+    
+    
+            var circle_marker_ef00eb591cdb07960d8c178e556b5f6e = L.circleMarker(
+                [44.5645659, -123.2620435],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_161607710c552148d4fb6448e336a6b8);
+        
+    
+        var popup_c8045d5c6dbc46164db75b81fe2af9b9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ce45fbadcaecb9fea2fb4376f50a43dd = $(`<div id="html_ce45fbadcaecb9fea2fb4376f50a43dd" style="width: 100.0%; height: 100.0%;">Corvallis, OR, OR<br>Growth: 4.02%</div>`)[0];
+                popup_c8045d5c6dbc46164db75b81fe2af9b9.setContent(html_ce45fbadcaecb9fea2fb4376f50a43dd);
+            
+        
+
+        circle_marker_ef00eb591cdb07960d8c178e556b5f6e.bindPopup(popup_c8045d5c6dbc46164db75b81fe2af9b9)
+        ;
+
+        
+    
+    
+            var circle_marker_606ee421f3dd170cf6b4c7858e71c82e = L.circleMarker(
+                [30.8365815, -83.9787808],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_161607710c552148d4fb6448e336a6b8);
+        
+    
+        var popup_81684b021f411d456db6419baccb562a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f2a6ebe753538ef3199a1d0f7f290c0f = $(`<div id="html_f2a6ebe753538ef3199a1d0f7f290c0f" style="width: 100.0%; height: 100.0%;">Thomasville, GA, GA<br>Growth: 3.79%</div>`)[0];
+                popup_81684b021f411d456db6419baccb562a.setContent(html_f2a6ebe753538ef3199a1d0f7f290c0f);
+            
+        
+
+        circle_marker_606ee421f3dd170cf6b4c7858e71c82e.bindPopup(popup_81684b021f411d456db6419baccb562a)
+        ;
+
+        
+    
+    
+            var circle_marker_b6085bf225532844c094bce94858bf08 = L.circleMarker(
+                [38.3625063, -98.7804087],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_161607710c552148d4fb6448e336a6b8);
+        
+    
+        var popup_5d9ff26113471f9ad15cc4c8bbe4732b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c2cba7b3d748ac27594993e76ff46aec = $(`<div id="html_c2cba7b3d748ac27594993e76ff46aec" style="width: 100.0%; height: 100.0%;">Great Bend, KS, KS<br>Growth: 3.58%</div>`)[0];
+                popup_5d9ff26113471f9ad15cc4c8bbe4732b.setContent(html_c2cba7b3d748ac27594993e76ff46aec);
+            
+        
+
+        circle_marker_b6085bf225532844c094bce94858bf08.bindPopup(popup_5d9ff26113471f9ad15cc4c8bbe4732b)
+        ;
+
+        
+    
+    
+            var circle_marker_739b285eca716dbe4baf3472c368c72f = L.circleMarker(
+                [37.7781702, -81.1881557],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_161607710c552148d4fb6448e336a6b8);
+        
+    
+        var popup_5c283e40f7485d8209f42d144a781fc9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4b797db469bc562fa7934a9210c6affe = $(`<div id="html_4b797db469bc562fa7934a9210c6affe" style="width: 100.0%; height: 100.0%;">Beckley, WV, WV<br>Growth: 3.48%</div>`)[0];
+                popup_5c283e40f7485d8209f42d144a781fc9.setContent(html_4b797db469bc562fa7934a9210c6affe);
+            
+        
+
+        circle_marker_739b285eca716dbe4baf3472c368c72f.bindPopup(popup_5c283e40f7485d8209f42d144a781fc9)
+        ;
+
+        
+    
+    
+            var circle_marker_9d1a4e64fa8974b583c5a84f7c83cf15 = L.circleMarker(
+                [34.1729273, -97.1309119],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_161607710c552148d4fb6448e336a6b8);
+        
+    
+        var popup_7cd3b4c9e1c31525e82aae76b736bc67 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b6a673e129d9dafba7860280f6011e75 = $(`<div id="html_b6a673e129d9dafba7860280f6011e75" style="width: 100.0%; height: 100.0%;">Ardmore, OK, OK<br>Growth: 3.26%</div>`)[0];
+                popup_7cd3b4c9e1c31525e82aae76b736bc67.setContent(html_b6a673e129d9dafba7860280f6011e75);
+            
+        
+
+        circle_marker_9d1a4e64fa8974b583c5a84f7c83cf15.bindPopup(popup_7cd3b4c9e1c31525e82aae76b736bc67)
+        ;
+
+        
+    
+    
+            var circle_marker_c82023445ed2bf05999c419b1ff2f58b = L.circleMarker(
+                [34.9531295, -120.435857],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_161607710c552148d4fb6448e336a6b8);
+        
+    
+        var popup_727cbd979d19df218356769704f9b08a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_06e173be54181ac4697cd2ec45835f56 = $(`<div id="html_06e173be54181ac4697cd2ec45835f56" style="width: 100.0%; height: 100.0%;">Santa Maria, CA, CA<br>Growth: 3.24%</div>`)[0];
+                popup_727cbd979d19df218356769704f9b08a.setContent(html_06e173be54181ac4697cd2ec45835f56);
+            
+        
+
+        circle_marker_c82023445ed2bf05999c419b1ff2f58b.bindPopup(popup_727cbd979d19df218356769704f9b08a)
+        ;
+
+        
+    
+    
+            var circle_marker_6d50e7d8ac430debe44c16dc49ca46b7 = L.circleMarker(
+                [35.3272928, -96.9253004],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_161607710c552148d4fb6448e336a6b8);
+        
+    
+        var popup_c3d05c77320330bd956ae1b2b0c4c5b8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3262f2bbce130c58e17fd8ae3da78f0a = $(`<div id="html_3262f2bbce130c58e17fd8ae3da78f0a" style="width: 100.0%; height: 100.0%;">Shawnee, OK, OK<br>Growth: 3.07%</div>`)[0];
+                popup_c3d05c77320330bd956ae1b2b0c4c5b8.setContent(html_3262f2bbce130c58e17fd8ae3da78f0a);
+            
+        
+
+        circle_marker_6d50e7d8ac430debe44c16dc49ca46b7.bindPopup(popup_c3d05c77320330bd956ae1b2b0c4c5b8)
+        ;
+
+        
+    
+    
+            var circle_marker_ad4b214101e58d1e8ccc471df7b1e9da = L.circleMarker(
+                [48.4200462, -122.32642],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_161607710c552148d4fb6448e336a6b8);
+        
+    
+        var popup_51ea794d0402827e54070390e2559196 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3a0b2f61b9c9a4940b4c9bba9d192b28 = $(`<div id="html_3a0b2f61b9c9a4940b4c9bba9d192b28" style="width: 100.0%; height: 100.0%;">Mount Vernon, WA, WA<br>Growth: 2.97%</div>`)[0];
+                popup_51ea794d0402827e54070390e2559196.setContent(html_3a0b2f61b9c9a4940b4c9bba9d192b28);
+            
+        
+
+        circle_marker_ad4b214101e58d1e8ccc471df7b1e9da.bindPopup(popup_51ea794d0402827e54070390e2559196)
+        ;
+
+        
+    
+    
+            var circle_marker_5cdc3529fe4e5bef8148623022f3c51e = L.circleMarker(
+                [33.9919761, -96.3776762],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_161607710c552148d4fb6448e336a6b8);
+        
+    
+        var popup_cf2f309f4b824c2dc0f15b465233df1a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9cee1db866a049ad9cbb7f43240a3da6 = $(`<div id="html_9cee1db866a049ad9cbb7f43240a3da6" style="width: 100.0%; height: 100.0%;">Durant, OK, OK<br>Growth: 2.94%</div>`)[0];
+                popup_cf2f309f4b824c2dc0f15b465233df1a.setContent(html_9cee1db866a049ad9cbb7f43240a3da6);
+            
+        
+
+        circle_marker_5cdc3529fe4e5bef8148623022f3c51e.bindPopup(popup_cf2f309f4b824c2dc0f15b465233df1a)
+        ;
+
+        
+    
+    
+            var circle_marker_dbe08e784bda7b7041fcffff2379d4df = L.circleMarker(
+                [32.44645, -99.7475905],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_161607710c552148d4fb6448e336a6b8);
+        
+    
+        var popup_280f2bd374e6ee13bb1974ed4e96509a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4159dec97cdfcc3e1332b402b274eee0 = $(`<div id="html_4159dec97cdfcc3e1332b402b274eee0" style="width: 100.0%; height: 100.0%;">Abilene, TX, TX<br>Growth: 2.87%</div>`)[0];
+                popup_280f2bd374e6ee13bb1974ed4e96509a.setContent(html_4159dec97cdfcc3e1332b402b274eee0);
+            
+        
+
+        circle_marker_dbe08e784bda7b7041fcffff2379d4df.bindPopup(popup_280f2bd374e6ee13bb1974ed4e96509a)
+        ;
+
+        
+    
+</script>
+</html>
